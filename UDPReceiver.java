@@ -1,4 +1,3 @@
-
 import java.net.*;
 
 public class UDPReceiver {
@@ -28,6 +27,10 @@ public class UDPReceiver {
 	            socket.receive( packet ) ;
 
 	            System.out.println( packet.getAddress() + " " + packet.getPort() + ": " + new String(packet.getData()).trim() ) ;
+	            System.out.println("Echoing back:");
+	            
+	            DatagramPacket packet2 = new DatagramPacket( new String(packet.getData()), packet.getData().length, packet.getAddress(), packet.getPort() ) ;
+	            socket.send(packet2) ;
 	        }  
 	     }
 	     catch( Exception e )
@@ -36,4 +39,3 @@ public class UDPReceiver {
 	     }
   }
 }
-
