@@ -17,5 +17,7 @@ while True:
     if not len(buf):
         break
     print ("Received %s bytes from %s %s: " % (len(buf), address, buf ))
+    print ("Echoing message back")
+    s.sendto(buf, address)
 
 s.shutdown(1)
